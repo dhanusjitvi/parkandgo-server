@@ -4,17 +4,24 @@ import { Slot, TemporarySlot } from '../models/slotes.js';
 
 
 export const OccupiedParkingSlots = async (req, res) => {
-    try {
-      const getAllslots = await Slot.find().sort({ createdAt: -1 });
-  
-      console.log(getAllslots);
-      res.json({
-        status: true,
-        OccupiedParkingSlots : getAllslots ,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  try {
+    const getAllSlotsWithUserInfo = await Slot.find()
+      .populate({
+        path: 'userId',
+        select: 'name number', // Fields you want to select from the User model
+      })
+      .sort({ createdAt: -1 });
+
+    console.log(getAllSlotsWithUserInfo);
+    res.json({
+      status: true,
+      OccupiedParkingSlots: getAllSlotsWithUserInfo,
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ status: false, message: 'Internal Server Error' });
+  }
+};
+
   
 

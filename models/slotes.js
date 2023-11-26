@@ -31,6 +31,10 @@ const temporarySlotSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  slotNumber: {
+    type: String,
+    required: true,
+  },
   startDate: {
     type: Date,
     required: true,
