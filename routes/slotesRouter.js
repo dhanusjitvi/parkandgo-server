@@ -16,6 +16,6 @@ slotesRoute.get('/users-on-leave',getLeaveUsers);
 
 slotesRoute.post('/users-apply-onleave',applyonleave);
 
-slotesRoute.post('/get-temporaryslot',reserveTemporarySlot);
+slotesRoute.post('/get-temporaryslot',reserveTemporarySlot );
 
 export default slotesRoute;
